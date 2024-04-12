@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block titulo %} ADMIN {% endblock %}
+{% block contenido %}
+<nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom" data-bs-theme="dark">
+  <div class="container">
+    <a class="navbar-brand d-md-none" href="#">
+      <i class="fa-solid fa-brain" style="color: #ffffff;"></i>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="#offcanvas" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="#offcanvas" aria-labelledby="#offcanvasLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="#offcanvasLabel">Aperture</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav flex-grow-1 justify-content-between">
+          <li class="nav-item"><a class="nav-link" href="#">
+            <i class="fa-solid fa-brain fa-xl" style="color: #9462a3;;"></i>
+          </a></li>
+          <li class="nav-item">
+            <a class="nav-link">{{ current_user.nombreu }}</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/">Product</a></li>
+          <li class="nav-item"><a class="nav-link" href="/">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Enterprise</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Operaciones
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/sUsuario" >Usuarios</a>
+              </li>
+              <li><a class="dropdown-item" href="/sWeb" >Webs</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout"><i class="fa-solid fa-right-from-bracket" style="color: #9462a3;"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+{% endblock %}

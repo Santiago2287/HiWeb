@@ -1,0 +1,257 @@
+{% extends "layout.html" %}
+{% block titulo %}
+Bienvenido a mi pagina
+{% endblock %}
+
+{% block contenido %}
+<style>
+
+    /* Slider Overlay */
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .overlay a {
+        color: #fff;
+    }
+    
+    /* Slider Navigation Arrows */
+    .owl-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+    }
+    
+    .owl-nav button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: #fff;
+    }
+    
+    .owl-prev {
+        left: 20px;
+    }
+    
+    .owl-next {
+        right: 20px;
+    }
+    
+
+</style>
+
+
+    <!-- Category Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-5">
+                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Subjects</h5>
+                <h1>Explore Top Subjects</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="static/img/home.jpg" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Web Design</h4>
+                            <span>100 Courses</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="static/img/home.jpg" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Development</h4>
+                            <span>100 Courses</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="static/img/home.jpg" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Game Design</h4>
+                            <span>100 Courses</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="static/img/home.jpg" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Apps Design</h4>
+                            <span>100 Courses</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="static/img/home.jpg" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Marketing</h4>
+                            <span>100 Courses</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="static/img/home.jpg" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Research</h4>
+                            <span>100 Courses</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="static/img/home.jpg" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Content Writing</h4>
+                            <span>100 Courses</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="static/img/home.jpg" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">SEO</h4>
+                            <span>100 Courses</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Category Start -->
+
+    <!-- Main News Slider Start -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-7 px-0">
+                <div class="owl-carousel main-carousel position-relative">
+                    <div class="position-relative overflow-hidden" style="height: 500px;">
+                        <img class="img-fluid h-100" src="static/img/home.jpg" style="object-fit: cover;">
+                        <div class="overlay">
+                            <div class="mb-2">
+                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                    href="">Business</a>
+                                <a class="text-white" href="">Jan 01, 2045</a>
+                            </div>
+                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                        </div>
+                    </div>
+                    <div class="position-relative overflow-hidden" style="height: 500px;">
+                        <img class="img-fluid h-100" src="static/img/home.jpg" style="object-fit: cover;">
+                        <div class="overlay">
+                            <div class="mb-2">
+                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                    href="">Business</a>
+                                <a class="text-white" href="">Jan 01, 2045</a>
+                            </div>
+                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                        </div>
+                    </div>
+                    <div class="position-relative overflow-hidden" style="height: 500px;">
+                        <img class="img-fluid h-100" src="static/img/home.jpg" style="object-fit: cover;">
+                        <div class="overlay">
+                            <div class="mb-2">
+                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                    href="">Business</a>
+                                <a class="text-white" href="">Jan 01, 2045</a>
+                            </div>
+                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 px-0">
+                <div class="row mx-0">
+                    <div class="col-md-6 px-0">
+                        <div class="position-relative overflow-hidden" style="height: 250px;">
+                            <img class="img-fluid w-100 h-100" src="static/img/home.jpg" style="object-fit: cover;">
+                            <div class="overlay">
+                                <div class="mb-2">
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        href="">Business</a>
+                                    <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                                </div>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 px-0">
+                        <div class="position-relative overflow-hidden" style="height: 250px;">
+                            <img class="img-fluid w-100 h-100" src="static/img/home.jpg" style="object-fit: cover;">
+                            <div class="overlay">
+                                <div class="mb-2">
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        href="">Business</a>
+                                    <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                                </div>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 px-0">
+                        <div class="position-relative overflow-hidden" style="height: 250px;">
+                            <img class="img-fluid w-100 h-100" src="static/img/home.jpg" style="object-fit: cover;">
+                            <div class="overlay">
+                                <div class="mb-2">
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        href="">Business</a>
+                                    <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                                </div>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 px-0">
+                        <div class="position-relative overflow-hidden" style="height: 250px;">
+                            <img class="img-fluid w-100 h-100" src="static/img/home.jpg" style="object-fit: cover;">
+                            <div class="overlay">
+                                <div class="mb-2">
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        href="">Business</a>
+                                    <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                                </div>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main News Slider End -->
+
+
+    $(document).ready(function(){
+        $('.main-carousel').owlCarousel({
+            loop:true,
+            margin:0,
+            nav:true,
+            items:1,
+            autoplay:true,
+            autoplayTimeout:5000,
+            autoplayHoverPause:true
+        });
+    });
+    
+{% endblock %}

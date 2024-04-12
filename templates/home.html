@@ -1,0 +1,761 @@
+{% extends "layout.html" %}
+{% block titulo %}
+Bienvenido a mi pagina
+{% endblock %}
+
+{% block contenido %}
+
+<style>
+  
+.carousel-caption {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: left;
+  background: rgba(0, 0, 0, .5);
+  z-index: 1;
+}
+
+.carousel-indicators {
+  width: 60px;
+  top: 0;
+  right: calc(100% - 60px);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-indicators li {
+  width: 25px;
+  height: 25px;
+  margin: 5px 0;
+  background: $dark;
+  border: 5px solid $light;
+  border-radius: 25px;
+}
+
+.carousel-indicators .active {
+  background: $primary;
+}
+
+@media (max-width: 991.98px) {
+  .carousel-indicators {
+      width: 45px;
+      right: calc(100% - 45px);
+  }
+
+  .carousel-indicators li {
+      width: 15px;
+      height: 15px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .carousel-caption h5 {
+      font-size: 16px;
+  }
+
+  .carousel-caption h1 {
+      font-size: 30px;
+      font-weight: 700 !important;
+  }
+}
+
+
+.card{
+
+	width: 350px;
+	border: none;
+	box-shadow: 5px 6px 6px 2px #e9ecef;
+	border-radius: 12px;
+}
+
+.circle-image img{
+
+	border: 6px solid #fff;
+    border-radius: 100%;
+    padding: 0px;
+    top: -28px;
+    position: relative;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    z-index: 1;
+    background: #e7d184;
+    cursor: pointer;
+
+}
+
+
+.dot {
+      height: 18px;
+    width: 18px;
+    background-color: blue;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    border: 3px solid #fff;
+    top: -48px;
+    left: 186px;
+    z-index: 1000;
+}
+
+.name{
+	margin-top: -21px;
+	font-size: 18px;
+}
+
+
+.fw-500{
+	font-weight: 500 !important;
+}
+
+
+.start{
+
+	color: green;
+}
+
+.stop{
+	color: red;
+}
+
+
+.rate{
+
+	border-bottom-right-radius: 12px;
+	border-bottom-left-radius: 12px;
+
+}
+
+
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: 1em;
+    font-size: 30px;
+    font-weight: 300;
+    color: #FFD600;
+    cursor: pointer
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}
+
+
+.buttons{
+	top: 36px;
+    position: relative;
+}
+
+
+.rating-submit{
+	border-radius: 15px;
+	color: #fff;
+	    height: 49px;
+}
+
+
+.rating-submit:hover{
+	
+	color: #fff;
+}
+
+
+
+.courses-item img {
+  position: relative;
+  margin-top: 40px;
+  transition: .5s;
+}
+
+.courses-list-item img {
+  position: relative;
+  transition: .5s;
+}
+
+.courses-item .courses-text,
+.courses-list-item .courses-text {
+  position: absolute;
+  width: 100%;
+  height: calc(100% + 86px);
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background: linear-gradient(to bottom, rgba(18, 15, 45, 0), #120f2d);
+  transition: .5s;
+  z-index: 1;
+}
+
+.courses-list-item .courses-text {
+  height: 100%;
+}
+
+.courses-item:hover img {
+  margin-top: 0px;
+}
+
+.courses-list-item:hover img {
+  transform: scale(1.2);
+}
+
+.courses-item:hover .courses-text {
+  height: calc(100% + 40px);
+}
+
+.team-carousel .owl-nav,
+.related-carousel .owl-nav {
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  top: calc(50% - 30px);
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.team-carousel .owl-nav .owl-prev,
+.team-carousel .owl-nav .owl-next,
+.related-carousel .owl-nav .owl-prev,
+.related-carousel .owl-nav .owl-next {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  background: #2878EB;
+  font-size: 22px;
+  transition: .5s;
+}
+
+.team-carousel .owl-nav .owl-prev:hover,
+.team-carousel .owl-nav .owl-next:hover,
+.related-carousel .owl-nav .owl-prev:hover,
+.related-carousel .owl-nav .owl-next:hover {
+  background: #F14D5D;
+}
+
+.testimonial-carousel .owl-item img {
+  width: 80px;
+  height: 80px;
+}
+
+.testimonial-carousel .owl-nav {
+  position: absolute;
+  width: 120px;
+  height: 60px;
+  top: 0;
+  right: 0;
+  display: flex;
+  z-index: 1;
+}
+
+.testimonial-carousel .owl-nav .owl-prev,
+.testimonial-carousel .owl-nav .owl-next {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  background: #2878EB;
+  font-size: 22px;
+  transition: .5s;
+}
+
+.testimonial-carousel .owl-nav .owl-prev,
+.testimonial-carousel .owl-nav .owl-next:hover {
+  background: #F14D5D;
+}
+
+.testimonial-carousel .owl-nav .owl-prev:hover {
+  background: #2878EB;
+}
+
+
+
+
+</style>
+  
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 pb-5 mb-5">
+      <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+          <ol class="carousel-indicators">
+              <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+              <li data-target="#header-carousel" data-slide-to="1"></li>
+              <li data-target="#header-carousel" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+              <div class="carousel-item active" style="min-height: 100px;">
+                  <img class="position-relative w-100" src="static/img/home.jpg" style="max-height: 550px; object-fit: cover;">
+                  <div class="carousel-caption d-flex align-items-center justify-content-center">
+                      <div class="p-5" style="width: 100%; max-width: 900px;">
+                          <h5 class="text-white text-uppercase mb-md-3">Best Online Courses</h5>
+                          <h1 class="display-3 text-white mb-md-4">Best Education From Your Home</h1>
+                          <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="carousel-item" style="min-height: 300px;">
+                  <img class="position-relative w-100" src="static/img/home.jpg" style="max-height: 550px; object-fit: cover;">
+                  <div class="carousel-caption d-flex align-items-center justify-content-center">
+                      <div class="p-5" style="width: 100%; max-width: 900px;">
+                          <h5 class="text-white text-uppercase mb-md-3">Best Online Courses</h5>
+                          <h1 class="display-3 text-white mb-md-4">Best Online Learning Platform</h1>
+                          <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="carousel-item" style="min-height: 300px;">
+                  <img class="position-relative w-100" src="static/img/home.jpg" style="min-height: 300px; object-fit: cover;">
+                  <div class="carousel-caption d-flex align-items-center justify-content-center">
+                      <div class="p-5" style="width: 100%; max-width: 900px;">
+                          <h5 class="text-white text-uppercase mb-md-3">Best Online Courses</h5>
+                          <h1 class="display-3 text-white mb-md-4">New Way To Learn From Home</h1>
+                          <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Carousel End -->
+    <!-- Feature Start -->
+    <div class="container-fluid py-5">
+      <div class="container py-5">
+          <div class="row">
+              <div class="col-lg-7 mb-5 mb-lg-0">
+                  <div class="section-title position-relative mb-4">
+                      <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Why Choose Us?</h6>
+                      <h1 class="display-4">Why You Should Start Learning with Us?</h1>
+                  </div>
+                  <p class="mb-4 pb-2">Aliquyam accusam clita nonumy ipsum sit sea clita ipsum clita, ipsum dolores amet voluptua duo dolores et sit ipsum rebum, sadipscing et erat eirmod diam kasd labore clita est. Diam sanctus gubergren sit rebum clita amet.</p>
+                  <div class="d-flex mb-3">
+                      <div class="btn-icon bg-primary mr-4">
+                          <i class="fa fa-2x fa-graduation-cap text-white"></i>
+                      </div>
+                      <div class="mt-n1">
+                          <h4>Skilled Instructors</h4>
+                          <p>Labore rebum duo est Sit dolore eos sit tempor eos stet, vero vero clita magna kasd no nonumy et eos dolor magna ipsum.</p>
+                      </div>
+                  </div>
+                  <div class="d-flex mb-3">
+                      <div class="btn-icon bg-secondary mr-4">
+                          <i class="fa fa-2x fa-certificate text-white"></i>
+                      </div>
+                      <div class="mt-n1">
+                          <h4>International Certificate</h4>
+                          <p>Labore rebum duo est Sit dolore eos sit tempor eos stet, vero vero clita magna kasd no nonumy et eos dolor magna ipsum.</p>
+                      </div>
+                  </div>
+                  <div class="d-flex">
+                      <div class="btn-icon bg-warning mr-4">
+                          <i class="fa fa-2x fa-book-reader text-white"></i>
+                      </div>
+                      <div class="mt-n1">
+                          <h4>Online Classes</h4>
+                          <p class="m-0">Labore rebum duo est Sit dolore eos sit tempor eos stet, vero vero clita magna kasd no nonumy et eos dolor magna ipsum.</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-5" style="min-height: 500px;">
+                  <div class="position-relative h-100">
+                      <img class="position-absolute w-100 h-100" src="img/feature.jpg" style="object-fit: cover;">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Feature Start -->
+    
+
+</div>
+
+  <!-- Footer -->
+
+  
+    <!-- Blog Start -->
+    <div class="container-fluid py-5">
+      <div class="container pt-5 pb-3">
+          <div class="text-center mb-5">
+              <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Our Blog</h5>
+              <h1>Latest From Our Blog</h1>
+          </div>
+          <div class="row pb-3">
+              <div class="col-lg-4 mb-4">
+                  <div class="blog-item position-relative overflow-hidden rounded mb-2">
+                      <img class="img-fluid" src="static/img/home.jpg" alt="300px">
+                      <a class="blog-overlay text-decoration-none" href="">
+                          <h5 class="text-white mb-3">Lorem elitr magna stet eirmod labore amet labore clita at ut clita</h5>
+                          <p class="text-primary m-0">Jan 01, 2050</p>
+                      </a>
+                  </div>
+              </div>
+              <div class="col-lg-4 mb-4">
+                  <div class="blog-item position-relative overflow-hidden rounded mb-2">
+                      <img class="img-fluid" src="static/img/home.jpg" alt="">
+                      <a class="blog-overlay text-decoration-none" href="">
+                          <h5 class="text-white mb-3">Lorem elitr magna stet eirmod labore amet labore clita at ut clita</h5>
+                          <p class="text-primary m-0">Jan 01, 2050</p>
+                      </a>
+                  </div>
+              </div>
+              <div class="col-lg-4 mb-4">
+                  <div class="blog-item position-relative overflow-hidden rounded mb-2">
+                      <img class="img-fluid" src="static/img/home.jpg" alt="">
+                      <a class="blog-overlay text-decoration-none" href="">
+                          <h5 class="text-white mb-3">Lorem elitr magna stet eirmod labore amet labore clita at ut clita</h5>
+                          <p class="text-primary m-0">Jan 01, 2050</p>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Blog End -->
+
+  
+    <!-- Courses Start -->
+    <div class="container-fluid py-5">
+      <div class="container py-5">
+          <div class="text-center mb-5">
+              <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Courses</h5>
+              <h1>Our Popular Courses</h1>
+          </div>
+          <div class="row">
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="rounded overflow-hidden mb-2">
+                      <img class="img-fluid" src="img/course-1.jpg" alt="">
+                      <div class="bg-secondary p-4">
+                          <div class="d-flex justify-content-between mb-3">
+                              <small class="m-0"><i class="fa fa-users text-primary mr-2"></i>25 Students</small>
+                              <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>01h 30m</small>
+                          </div>
+                          <a class="h5" href="">Web design & development courses for beginner</a>
+                          <div class="border-top mt-4 pt-4">
+                              <div class="d-flex justify-content-between">
+                                  <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                                  <h5 class="m-0">$99</h5>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="rounded overflow-hidden mb-2">
+                      <img class="img-fluid" src="img/course-2.jpg" alt="">
+                      <div class="bg-secondary p-4">
+                          <div class="d-flex justify-content-between mb-3">
+                              <small class="m-0"><i class="fa fa-users text-primary mr-2"></i>25 Students</small>
+                              <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>01h 30m</small>
+                          </div>
+                          <a class="h5" href="">Web design & development courses for beginner</a>
+                          <div class="border-top mt-4 pt-4">
+                              <div class="d-flex justify-content-between">
+                                  <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                                  <h5 class="m-0">$99</h5>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="rounded overflow-hidden mb-2">
+                      <img class="img-fluid" src="img/course-3.jpg" alt="">
+                      <div class="bg-secondary p-4">
+                          <div class="d-flex justify-content-between mb-3">
+                              <small class="m-0"><i class="fa fa-users text-primary mr-2"></i>25 Students</small>
+                              <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>01h 30m</small>
+                          </div>
+                          <a class="h5" href="">Web design & development courses for beginner</a>
+                          <div class="border-top mt-4 pt-4">
+                              <div class="d-flex justify-content-between">
+                                  <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                                  <h5 class="m-0">$99</h5>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="rounded overflow-hidden mb-2">
+                      <img class="img-fluid" src="img/course-4.jpg" alt="">
+                      <div class="bg-secondary p-4">
+                          <div class="d-flex justify-content-between mb-3">
+                              <small class="m-0"><i class="fa fa-users text-primary mr-2"></i>25 Students</small>
+                              <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>01h 30m</small>
+                          </div>
+                          <a class="h5" href="">Web design & development courses for beginner</a>
+                          <div class="border-top mt-4 pt-4">
+                              <div class="d-flex justify-content-between">
+                                  <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                                  <h5 class="m-0">$99</h5>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="rounded overflow-hidden mb-2">
+                      <img class="img-fluid" src="img/course-5.jpg" alt="">
+                      <div class="bg-secondary p-4">
+                          <div class="d-flex justify-content-between mb-3">
+                              <small class="m-0"><i class="fa fa-users text-primary mr-2"></i>25 Students</small>
+                              <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>01h 30m</small>
+                          </div>
+                          <a class="h5" href="">Web design & development courses for beginner</a>
+                          <div class="border-top mt-4 pt-4">
+                              <div class="d-flex justify-content-between">
+                                  <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                                  <h5 class="m-0">$99</h5>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="rounded overflow-hidden mb-2">
+                      <img class="img-fluid" src="img/course-6.jpg" alt="">
+                      <div class="bg-secondary p-4">
+                          <div class="d-flex justify-content-between mb-3">
+                              <small class="m-0"><i class="fa fa-users text-primary mr-2"></i>25 Students</small>
+                              <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>01h 30m</small>
+                          </div>
+                          <a class="h5" href="">Web design & development courses for beginner</a>
+                          <div class="border-top mt-4 pt-4">
+                              <div class="d-flex justify-content-between">
+                                  <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                                  <h5 class="m-0">$99</h5>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Courses End -->
+
+
+
+  
+
+  <!--Modal de Registro-->
+  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Registrate</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form method="post" action="/sigin" class="row g-3">
+          <div class="modal-body">
+            <div class="container text-center">
+              <div class="row">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text"><i class="fa-solid fa-envelope" style="color: #9462a3;"></i></span>
+                      <div class="form-floating">
+                        <input type="email" name="correou" class="form-control" id="inputEmail4" placeholder="Username">
+                        <label for="inputEmail4"> Email</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text"><i class="fa-solid fa-at" style="color: #9462a2;"></i></span>
+                      <div class="form-floating">
+                        <input type="text" name="nombreu" class="form-control" id="inputNombre4" placeholder="Username">
+                        <label for="inputNombre4">Username</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="input-group mb-3">
+                  <span class="input-group-text"><i class="fa-solid fa-key" style="color: #9462a2;"></i></span>
+                  <div class="form-floating">
+                    <input type="password" name="claveu" class="form-control" id="inputPassword4"
+                      placeholder="Password">
+                    <label for="inputPassword4">Password</label>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row g-2">
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input type="text" name="edadu" class="form-control" id="floatingInputGrid" placeholder="Edad">
+                    <label for="floatingInputGrid">Edad</label>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="form-floating">
+                    <select name="profesionu" class="form-select" id="floatingSelectGrid">
+                      <option selected value="E">Estudiante</option>
+                      <option value="M">Maestro</option>
+                      <option value="D">Divulgador</option>
+                      <option value="O">Otro</option>
+                    </select>
+                    <label for="floatingSelectGrid">Eres</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="dropdown-divider">
+
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn" style="background-color: #9462a3;" type="button">Continuar</button>
+
+          </div>
+
+          <hr class="dropdown-divider">
+          <hr class="dropdown-divider">
+
+          <div class="d-grid gap-2 col-3 mx-auto">
+            <button class="btn btn-secondary" type="button"><i class="fa-brands fa-google"
+                style="color: #ffffff;"></i></button>
+            <button class="btn btn-secondary" type="button"><i class="fa-brands fa-facebook"
+                style="color: #ffffff;"></i></button>
+          </div>
+
+          <div class="modal-footer">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Log In-->
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Iniciar Sesion</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form method="post" action="/login" class="row g-3">
+          <div class="modal-body">
+            {% with mensajes = get_flashed_messages() %}
+            {% if mensajes %}
+            {% for m in mensajes %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              {{m}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <div class="container">
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa-solid fa-at" style="color: #9462a2;"></i></span>
+                <div class="form-floating">
+                  <input type="email" name="correou" class="form-control" id="floatingInputGroup1"
+                    placeholder="Username">
+                  <label for="floatingInputGroup1">Email</label>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa-solid fa-key" style="color: #9462a2;"></i></span>
+                <div class="form-floating">
+                  <input type="password" name="claveu" class="form-control" id="floatingInputGroup1"
+                    placeholder="Username">
+                  <label for="floatingInputGroup1">Contraeña</label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <hr class="dropdown-divider">
+
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn" t style="background-color: #9462a3;" type="submit">Continuar</button>
+
+          </div>
+
+          <hr class="dropdown-divider">
+          <hr class="dropdown-divider">
+
+          <div class="d-grid gap-2 col-3 mx-auto">
+            <button class="btn btn-secondary" type="button"><i class="fa-brands fa-google"
+                style="color: #ffffff;"></i></button>
+            <button class="btn btn-secondary" type="button"><i class="fa-brands fa-facebook"
+                style="color: #ffffff;"></i></button>
+          </div>
+
+          <div class="modal-footer">
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).ready(function(){
+      $('.courses-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        responsive:{
+          0:{
+            items:1
+          },
+          600:{
+            items:2
+          },
+          1000:{
+            items:3
+          }
+        }
+      });
+    });
+  </script>
+  
+
+  {% endblock %}
