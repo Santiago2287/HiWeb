@@ -286,6 +286,6 @@ def addFav(idweb):
 if __name__ == '__main__':
     mentalApp.config.from_object(config['development'])
     mail = Mail(mentalApp)
-    mentalApp.run(debug=True, port=3300)
+    mentalApp.run(host='0.0.0.0', port=10000)
     
 
