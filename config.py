@@ -1,9 +1,9 @@
 class Config :
     SECRET_KEY = 'chamaquillocomecomemocos'
     MAIL_SERVER = 'smtp.gmail.com'
-    MAIL_USERNAME = 'adrian.martinez1621@alumnos.udg.mx'
+    MAIL_USERNAME = 'your email'
     MAIL_PASSWORD =  'qrdatxkzcthoxofm'
-    MAIL_DEFAULT_SENDER = 'adrian.martinez1621@alumnos.udg.mx'
+    MAIL_DEFAULT_SENDER = 'your email'
     MAIL_ASCII_ATTACHMENTS = True
     MAIL_PORT = 587
     MAIL_USE_TLS = True
